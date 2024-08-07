@@ -70,7 +70,7 @@ python -m spacy download en_core_web_sm
 
 You can run the application locally in two ways:
 
-1.  **Using Uvicorn:**
+- **Using Uvicorn:**
 
 This is the recommended method for running in a development or production-like environment.
 
@@ -78,7 +78,7 @@ This is the recommended method for running in a development or production-like e
 uvicorn main:app --reload --port 5000
 ```
 
-2.  **Using Python:**
+- **Using Python:**
 
 This method allows you to pass command-line arguments for customizing models.
 
