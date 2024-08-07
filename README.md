@@ -17,12 +17,12 @@ The service allows flexibility in model selection through command-line arguments
 
 ## Features
 
-- **Text Summarization:** Generate concise summaries of long texts using BART.
-- **Sentiment Analysis:** Determine the sentiment of text inputs using a fine-tuned DistilBERT model.
-- **Named Entity Recognition:** Identify entities within text and sort them by frequency.
-- **Paraphrasing:** Rephrase sentences to produce semantically similar outputs using a T5 model.
-- **Keyword Extraction:** Extract important keywords from text, with customizable output count using KeyBERT.
-- **Embedding Generation:** Create vector representations of text using SentenceTransformers.
+- **Text Summarization:** Generate concise summaries of long texts, default model `BART`.
+- **Sentiment Analysis:** Determine the sentiment of text inputs, default model `DistilBERT`.
+- **Named Entity Recognition (NER):** Identify entities within text and sort them by frequency, default model `BERT` (dbmdz/bert-large-cased-finetuned-conll03-english).
+- **Paraphrasing:** Rephrase sentences to produce semantically similar outputs, default model `T5`.
+- **Keyword Extraction:** Extract important keywords from text, with customizable output count, default model `KeyBERT`.
+- **Embedding Generation:** Create vector representations of text, default model `SentenceTransformers` (all-MiniLM-L6-v2).
 
 ## Dependencies
 
