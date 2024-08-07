@@ -68,25 +68,25 @@ python -m spacy download en_core_web_sm
 
 5. **Run the Application Locally:**
 
-   You can run the application locally in two ways:
+You can run the application locally in two ways:
 
-   **5.a Using Uvicorn:**
+      1. **Using Uvicorn:**
 
-   This is the recommended method for running in a development or production-like environment.
+      This is the recommended method for running in a development or production-like environment.
 
-```bash
-uvicorn main:app --reload --port 5000
-```
+      ```bash
+      uvicorn main:app --reload --port 5000
+      ```
 
-    **5.b Using Python:**
+      2. **Using Python:**
 
-    This method allows you to pass command-line arguments for customizing models.
+      This method allows you to pass command-line arguments for customizing models.
 
-```bash
-python main.py --embedding-model all-MiniLM-L6-v2 --summarization-model facebook/bart-large-cnn
-```
+      ```bash
+      python main.py --embedding-model all-MiniLM-L6-v2 --summarization-model facebook/bart-large-cnn
+      ```
 
-    Replace `--embedding-model` and `--summarization-model` with the models you wish to use. This approach offers flexibility by allowing you to specify different models for various NLP tasks.
+Replace `--embedding-model` and `--summarization-model` with the models you wish to use. This approach offers flexibility by allowing you to specify different models for various NLP tasks.
 
 ### Options
 
