@@ -2,6 +2,8 @@
 
 LLM Services API is a FastAPI-based application that provides a suite of natural language processing services using various machine learning models. The application is designed to run in a Docker container, providing endpoints for text summarization, sentiment analysis, named entity recognition, paraphrasing, keyword extraction, and embedding generation.
 
+A Python FastAPI-based REST API that provides a suite of natural language processing services using various machine learning models with PyTorch and Transformers that runs in a Docker container.
+
 ## Features
 
 - **Text Summarization:** Generate concise summaries of long texts using BART.
@@ -55,7 +57,7 @@ python -m spacy download en_core_web_sm
 5. **Run the Application Locally:**
 
 ```bash
-uvicorn main:app --reload
+uvicorn main:app --reload --port 5000
 ```
 
 ## Running with Docker
@@ -159,17 +161,20 @@ The API provides several endpoints for various NLP tasks. Below is a summary of 
 - **Endpoint:** `/paraphrase`
 - **Method:** `POST`
 - **Request Body:**
-  ```
-  {
+
+```json
+{
   "text": "Your text here"
-  }
-  ```
+}
+```
+
 - **Response:**
-  ```
-  {
+
+```json
+{
   "paraphrased_text": "The paraphrased version of the input text."
-  }
-  ```
+}
+```
 
 #### 5. Keyword Extraction
 
@@ -178,40 +183,46 @@ The API provides several endpoints for various NLP tasks. Below is a summary of 
 - **Query Parameters:**
   - `num_keywords`: Optional, defaults to 5. Specifies the number of keywords to extract.
 - **Request Body:**
-  ```
-  {
+
+```json
+{
   "text": "Your text here"
-  }
-  ```
+}
+```
+
 - **Response:**
-  ```
-  {
-  "keywords": [
-  {
-  "keyword": "important keyword",
-  "score": 0.95
-  },
-  ...
-  ]
-  }
-  ```
+
+```json
+{
+"keywords": [
+    {
+        "keyword": "important keyword",
+        "score": 0.95
+        },
+        ...
+    ]
+}
+```
 
 #### 6. Embedding Generation
 
 - **Endpoint:** `/embed`
 - **Method:** `POST`
 - **Request Body:**
-  ```
-  {
+
+```json
+{
   "text": "Your text here"
-  }
-  ```
+}
+```
+
 - **Response:**
-  ```
-  {
-  "embedding": [0.1, 0.2, 0.3, ...] # Array of float numbers representing the text embedding
-  }
-  ```
+
+```json
+{
+    "embedding": [0.1, 0.2, 0.3, ...] # Array of float numbers representing the text embedding
+}
+```
 
 ## Contribute
 
