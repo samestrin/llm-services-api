@@ -1,3 +1,14 @@
+"""
+llm-services-api is a FastAPI-based application that provides a suite of natural language processing services 
+using various machine learning models. The application is designed to run in a Docker container, providing 
+endpoints for text summarization, sentiment analysis, named entity recognition, paraphrasing, keyword extraction,
+and embedding generation.
+
+Copyright (c) 2024-PRESENT Sam Estrin
+This script is licensed under the MIT License (see LICENSE for details)
+GitHub: https://github.com/samestrin/llm-services-api
+"""
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from utils.middleware import add_security_headers
