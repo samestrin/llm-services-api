@@ -2,8 +2,6 @@
 
 LLM Services API is a FastAPI-based application that provides a suite of natural language processing services using various machine learning models. The application is designed to run in a Docker container, providing endpoints for text summarization, sentiment analysis, named entity recognition, paraphrasing, keyword extraction, and embedding generation.
 
-A Python FastAPI-based REST API that provides a suite of natural language processing services using various machine learning models with PyTorch and Transformers that runs in a Docker container.
-
 ## Features
 
 - **Text Summarization:** Generate concise summaries of long texts using BART.
