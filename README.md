@@ -88,6 +88,18 @@ python main.py --embedding-model all-MiniLM-L6-v2 --summarization-model facebook
 
 Replace `--embedding-model` and `--summarization-model` with the models you wish to use. This approach offers flexibility by allowing you to specify different models for various NLP tasks.
 
+### Options
+
+```bash
+  -h, --help                                  Show this help message and exit
+  --embedding-model EMBEDDING_MODEL           Specify embedding model
+  --summarization-model SUMMARIZATION_MODEL   Specify summarization model
+  --sentiment-model SENTIMENT_MODEL           Specify sentiment analysis model
+  --ner-model NER_MODEL                       Specify named entity recognition model
+  --paraphrase-model PARAPHRASE_MODEL         Specify paraphrasing model
+  --keyword-model KEYWORD_MODEL               Specify keyword extraction mode
+```
+
 ## Running with Docker
 
 To run the application in a Docker container, follow these steps:
@@ -105,18 +117,6 @@ docker run -p 5000:5000 llm-services-api
 ```
 
 The application will be accessible at `http://localhost:5000`.
-
-## Options
-
-```bash
-  -h, --help                                  Show this help message and exit
-  --embedding-model EMBEDDING_MODEL           Specify embedding model
-  --summarization-model SUMMARIZATION_MODEL   Specify summarization model
-  --sentiment-model SENTIMENT_MODEL           Specify sentiment analysis model
-  --ner-model NER_MODEL                       Specify named entity recognition model
-  --paraphrase-model PARAPHRASE_MODEL         Specify paraphrasing model
-  --keyword-model KEYWORD_MODEL               Specify keyword extraction mode
-```
 
 ## Usage
 
