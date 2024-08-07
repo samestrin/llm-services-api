@@ -1,10 +1,19 @@
 # LLM Services API
 
-[![Star on GitHub](https://img.shields.io/github/stars/samestrin/llm-services-api?style=social)](https://github.com/samestrin/llm-services-api/stargazers)[![Fork on GitHub](https://img.shields.io/github/forks/samestrin/llm-services-api?style=social) ](https://github.com/samestrin/llm-services-api/network/members)[![Watch on GitHub](https://img.shields.io/github/watchers/samestrin/llm-services-api?style=social)](https://github.com/samestrin/llm-services-api/watchers)
+[![Star on GitHub](https://img.shields.io/github/stars/samestrin/llm-services-api?style=social)](https://github.com/samestrin/llm-services-api/stargazers)[![Fork on GitHub](https://img.shields.io/github/forks/samestrin/llm-services-api?style=social)](https://github.com/samestrin/llm-services-api/network/members)[![Watch on GitHub](https://img.shields.io/github/watchers/samestrin/llm-services-api?style=social)](https://github.com/samestrin/llm-services-api/watchers)
 
-![Version 0.0.1](https://img.shields.io/badge/Version-0.0.1-blue) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg) ](https://opensource.org/licenses/MIT)[![Built with Python](https://img.shields.io/badge/Built%20with-Python-green)](https://www.python.org/)
+![Version 0.0.2](https://img.shields.io/badge/Version-0.0.2-blue) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)[![Built with Python](https://img.shields.io/badge/Built%20with-Python-green)](https://www.python.org/)
 
-LLM Services API is a FastAPI-based application that provides a suite of natural language processing services using various machine learning models. The application is designed to run in a Docker container, providing endpoints for text summarization, sentiment analysis, named entity recognition, paraphrasing, keyword extraction, and embedding generation.
+LLM Services API is a FastAPI-based application that provides a suite of natural language processing services using various machine learning models from Hugging Face's `transformers` library. The application is designed to run in a Docker container, providing endpoints for text summarization, sentiment analysis, named entity recognition, paraphrasing, keyword extraction, and embedding generation. The entire API is secured using an API key with `Bearer <token>` format, ensuring that only authorized users can access the endpoints.
+
+The service allows flexibility in model selection through command-line arguments and a configuration file, `models_config.json`, enabling users to specify different Hugging Face models for various NLP tasks. This flexibility allows users to select lightweight models for lower-resource environments or more powerful models for advanced tasks.
+
+## Updates
+
+**0.0.2**
+
+- **OpenAI-Compatible Embeddings:** Provides an endpoint that mimics the OpenAI embedding API, allowing easy integration with existing systems expecting OpenAI-like responses.
+- **Configurable Model Loading:** Customize which Hugging Face NLP models are loaded by providing command-line arguments or configuring the `models_config.json` file. This flexibility allows the application to adapt to different resource environments or use cases.
 
 ## Features
 
@@ -25,6 +34,7 @@ LLM Services API is a FastAPI-based application that provides a suite of natural
 - sentence-transformers
 - keybert
 - torch
+- python-dotenv (for environment variable management)
 
 ## Installation
 
@@ -223,6 +233,39 @@ The API provides several endpoints for various NLP tasks. Below is a summary of 
 ```json
 {
     "embedding": [0.1, 0.2, 0.3, ...] # Array of float numbers representing the text embedding
+}
+```
+
+### 7. OpenAI-Compatible Embedding
+
+- **Endpoint:** `/v1/embeddings`
+- **Method:** `POST`
+- **Request Body:**
+
+```json
+{
+  "input": "Your text here",
+  "model": "all-MiniLM-L6-v2"  # or another supported model
+}
+```
+
+- **Response:**
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "object": "embedding",
+      "index": 0,
+      "embedding": [-0.006929283495992422, -0.005336422007530928, ...],  # Embedding array
+    }
+  ],
+  "model": "all-MiniLM-L6-v2",
+  "usage": {
+    "prompt_tokens": 5,  # Number of tokens in the input
+    "total_tokens": 5    # Total number of tokens processed
+  }
 }
 ```
 

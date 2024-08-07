@@ -5,6 +5,9 @@ import spacy
 nlp = spacy.load("en_core_web_sm")
 
 def correct_sentence_spacing(text: str) -> str:
+    """
+    Correct common spacing issues in text.
+    """
     # Use spaCy to split text into sentences
     doc = nlp(text)
     sentences = [sent.text.strip() for sent in doc.sents]
@@ -34,9 +37,10 @@ def correct_sentence_spacing(text: str) -> str:
 
     return corrected_text
 
-# Function to chunk text using a sliding window approach
 def chunk_text(text, tokenizer, max_length=512, overlap=50):
-    """Chunk text into manageable pieces using a sliding window approach."""
+    """
+    Chunk text into manageable pieces using a sliding window approach.
+    """
     tokens = tokenizer.encode(text, truncation=False)
     total_tokens = len(tokens)
     chunks = []
@@ -45,8 +49,18 @@ def chunk_text(text, tokenizer, max_length=512, overlap=50):
     for i in range(0, total_tokens, max_length - overlap):
         # Get tokens for the current chunk, ensure we don't exceed total token length
         chunk_tokens = tokens[i:i + max_length]
+
         # Decode tokens back to text
         chunk_text = tokenizer.decode(chunk_tokens, skip_special_tokens=True)
         chunks.append(chunk_text)
 
     return chunks
+
+def count_tokens(text: str, model_name: str) -> int:
+    """
+    Count the number of tokens in a text string.
+    """
+    # This function uses a simple word split as a proxy for token count
+    # Adjust this method if using a tokenizer specific to your models
+    tokens = text.split()
+    return len(tokens)

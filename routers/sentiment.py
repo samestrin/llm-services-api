@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException, Depends
 from schemas.requests import TextRequest
 from utils.auth import get_api_key
-from models.nlp_models import sentiment_analyzer
+from models.nlp_models import get_model
 from utils.text_processing import correct_sentence_spacing
 
 router = APIRouter(prefix="/sentiment", tags=["Sentiment Analysis"])
@@ -9,13 +9,8 @@ router = APIRouter(prefix="/sentiment", tags=["Sentiment Analysis"])
 @router.post("/", dependencies=[Depends(get_api_key)])
 async def sentiment(request: TextRequest):
     corrected_text = correct_sentence_spacing(request.text)
-
-    # Truncate text to the first 512 tokens
-    encoded_text = sentiment_analyzer.tokenizer.encode(corrected_text, truncation=True, max_length=512)
-
-    # Decode back to string
-    truncated_text = sentiment_analyzer.tokenizer.decode(encoded_text, skip_special_tokens=True)
-
+    # Get sentiment analysis model
+    sentiment_analyzer = get_model("sentiment", "distilbert-base-uncased-finetuned-sst-2-english")
     # Analyze sentiment
-    result = sentiment_analyzer(truncated_text)
+    result = sentiment_analyzer(corrected_text)
     return {"sentiment": result}
