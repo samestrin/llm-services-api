@@ -6,7 +6,7 @@ from fastapi import Request, HTTPException
 class AdaptiveThrottling:
     def __init__(self, base_backoff: int = 1, max_backoff: int = 60):
         """
-        Initialize the AdaptiveThrottling class.
+        Initialize the AdaptiveThrottling class. 
 
         Args:
             base_backoff (int): The base backoff time in seconds.
