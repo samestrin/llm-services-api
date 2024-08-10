@@ -1,7 +1,8 @@
 # LLM Services API
 
-[![Star on GitHub](https://img.shields.io/github/stars/samestrin/llm-services-api?style=social)](https://github.com/samestrin/llm-services-api/stargazers)[![Fork on GitHub](https://img.shields.io/github/forks/samestrin/llm-services-api?style=social)](https://github.com/samestrin/llm-services-api/network/members)[![Watch on GitHub](https://img.shields.io/github/watchers/samestrin/llm-services-api?style=social)](https:
-![Version 0.0.3](https://img.shields.io/badge/Version-0.0.3-blue) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)[![Built with Python](https://img.shields.io/badge/Built%20with-Python-green)](https:
+[![Star on GitHub](https://img.shields.io/github/stars/samestrin/llm-services-api?style=social)](https://github.com/samestrin/llm-services-api/stargazers)[![Fork on GitHub](https://img.shields.io/github/forks/samestrin/llm-services-api?style=social)](https://github.com/samestrin/llm-services-api/network/members)[![Watch on GitHub](https://img.shields.io/github/watchers/samestrin/llm-services-api?style=social)](https://github.com/samestrin/llm-services-api/watchers)
+
+![Version 0.0.3](https://img.shields.io/badge/Version-0.0.3-blue) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)[![Built with Python](https://img.shields.io/badge/Built%20with-Python-green)](https://www.python.org/)
 
 LLM Services API is a FastAPI-based application that provides a suite of natural language processing services using various machine learning models from Hugging Face's `transformers` library. The application is designed to run in a Docker container, providing endpoints for text summarization, sentiment analysis, named entity recognition, paraphrasing, keyword extraction, and embedding generation. The entire API is secured using an API key with `Bearer <token>` format, ensuring that only authorized users can access the endpoints.
 
