@@ -1,14 +1,17 @@
 # LLM Services API
 
-[![Star on GitHub](https://img.shields.io/github/stars/samestrin/llm-services-api?style=social)](https://github.com/samestrin/llm-services-api/stargazers)[![Fork on GitHub](https://img.shields.io/github/forks/samestrin/llm-services-api?style=social)](https://github.com/samestrin/llm-services-api/network/members)[![Watch on GitHub](https://img.shields.io/github/watchers/samestrin/llm-services-api?style=social)](https://github.com/samestrin/llm-services-api/watchers)
-
-![Version 0.0.2](https://img.shields.io/badge/Version-0.0.2-blue) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)[![Built with Python](https://img.shields.io/badge/Built%20with-Python-green)](https://www.python.org/)
+[![Star on GitHub](https://img.shields.io/github/stars/samestrin/llm-services-api?style=social)](https://github.com/samestrin/llm-services-api/stargazers)[![Fork on GitHub](https://img.shields.io/github/forks/samestrin/llm-services-api?style=social)](https://github.com/samestrin/llm-services-api/network/members)[![Watch on GitHub](https://img.shields.io/github/watchers/samestrin/llm-services-api?style=social)](https:
+![Version 0.0.3](https://img.shields.io/badge/Version-0.0.3-blue) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)[![Built with Python](https://img.shields.io/badge/Built%20with-Python-green)](https:
 
 LLM Services API is a FastAPI-based application that provides a suite of natural language processing services using various machine learning models from Hugging Face's `transformers` library. The application is designed to run in a Docker container, providing endpoints for text summarization, sentiment analysis, named entity recognition, paraphrasing, keyword extraction, and embedding generation. The entire API is secured using an API key with `Bearer <token>` format, ensuring that only authorized users can access the endpoints.
 
 The service allows flexibility in model selection through command-line arguments and a configuration file, `models_config.json`, enabling users to specify different Hugging Face models for various NLP tasks. This flexibility allows users to select lightweight models for lower-resource environments or more powerful models for advanced tasks.
 
 ## Updates
+
+**0.0.3**
+
+- **Adaptive Throttling:** Implemented an adaptive throttling mechanism that delays requests using the `Retry-After` header when errors are encountered due to high request frequency or processing failures. The delay is dynamically adjusted based on the client’s request rate and error occurrences.
 
 **0.0.2**
 

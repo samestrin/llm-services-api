@@ -1,22 +1,29 @@
+# main.py
+
 """
 llm-services-api is a FastAPI-based application that provides a suite of natural language processing services 
 using various machine learning models. The application is designed to run in a Docker container, providing 
 endpoints for text summarization, sentiment analysis, named entity recognition, paraphrasing, keyword extraction,
 and embedding generation.
 """
+
 import argparse
 import json
 import logging
 import sys
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI, Depends, Request
 from fastapi.middleware.cors import CORSMiddleware
 from utils.middleware import add_security_headers
 from utils.auth import get_api_key  # Import get_api_key for global dependency
 from routers import summarization, sentiment, entities, paraphrase, keywords, embedding, openai_compatible_embedding
 from models.nlp_models import load_models
+from utils.throttling import AdaptiveThrottling
 
 # Initialize the FastAPI app with global API key dependency
 app = FastAPI(dependencies=[Depends(get_api_key)])
+
+# Initialize Adaptive Throttling
+throttler = AdaptiveThrottling()
 
 # CORS configuration to allow all origins
 app.add_middleware(
@@ -29,6 +36,21 @@ app.add_middleware(
 
 # Add security headers middleware
 app.middleware("http")(add_security_headers)
+
+# Add adaptive throttling middleware
+@app.middleware("http")
+async def adaptive_throttling_middleware(request: Request, call_next):
+    client_ip = request.client.host
+    await throttler.check_rate_limit(request)
+
+    try:
+        response = await call_next(request)
+        throttler.reset_error_count(client_ip)
+    except Exception as e:
+        throttler.record_error(client_ip)
+        raise e
+
+    return response
 
 # Include routers
 app.include_router(summarization.router)
@@ -57,7 +79,7 @@ def parse_arguments():
     parser.add_argument("--ner-model", type=str, help="Specify named entity recognition model")
     parser.add_argument("--paraphrase-model", type=str, help="Specify paraphrasing model")
     parser.add_argument("--keyword-model", type=str, help="Specify keyword extraction model")
-    
+
     # Only parse args if we're not running via Uvicorn
     if 'uvicorn' not in sys.argv[0]:
         args = parser.parse_args()
@@ -71,11 +93,9 @@ def initialize_models():
     """
     # Load JSON config and command-line args
     config = load_config()
-
     # Combine the JSON configuration with any command-line overrides
     args = parse_arguments()
     config.update({k.replace("-", "_"): v for k, v in args.items() if v is not None})
-
     # Load models based on the configuration
     load_models(config)
 
