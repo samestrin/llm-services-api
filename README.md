@@ -4,7 +4,7 @@
 
 ![Version 0.0.4](https://img.shields.io/badge/Version-0.0.4-blue) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)[![Built with Python](https://img.shields.io/badge/Built%20with-Python-green)](https://www.python.org/)
 
-LLM Services API is a FastAPI-based application that provides a suite of natural language processing services using various machine learning models from Hugging Face's `transformers` library. The application is designed to run in a Docker container, providing endpoints for text summarization, sentiment analysis, named entity recognition, paraphrasing, keyword extraction, and embedding generation. The entire API is secured using an API key with `Bearer <token>` format, ensuring that only authorized users can access the endpoints.
+LLM Services API is a FastAPI-based application that provides a suite of natural language processing services using various machine learning models from Hugging Face's `transformers` library through a REST API interface. The application is designed to run in a Docker container, providing endpoints for text summarization, sentiment analysis, named entity recognition, paraphrasing, keyword extraction, and embedding generation. The entire API is secured using an API key with `Bearer <token>` format, ensuring that only authorized users can access the endpoints.
 
 The service allows flexibility in model selection through command-line arguments and a configuration file, `models_config.json`, enabling users to specify different Hugging Face models for various NLP tasks. This flexibility allows users to select lightweight models for lower-resource environments or more powerful models for advanced tasks.
 
