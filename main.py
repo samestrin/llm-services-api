@@ -9,13 +9,12 @@ and embedding generation.
 
 import argparse
 import json
-import logging
 import sys
 from fastapi import FastAPI, Depends, Request
 from fastapi.middleware.cors import CORSMiddleware
 from utils.middleware import add_security_headers
-from utils.auth import get_api_key  # Import get_api_key for global dependency
-from routers import summarization, sentiment, entities, paraphrase, keywords, embedding, openai_compatible_embedding
+from utils.auth import get_api_key  
+from routers import summarization, sentiment, entities, paraphrase, keywords, embedding, openai_compatible_embedding, tokenize, detokenize
 from models.nlp_models import load_models
 from utils.throttling import AdaptiveThrottling
 
@@ -60,6 +59,8 @@ app.include_router(paraphrase.router)
 app.include_router(keywords.router)
 app.include_router(embedding.router)
 app.include_router(openai_compatible_embedding.router)
+app.include_router(tokenize.router)
+app.include_router(detokenize.router)
 
 def load_config():
     """

@@ -2,13 +2,17 @@
 
 [![Star on GitHub](https://img.shields.io/github/stars/samestrin/llm-services-api?style=social)](https://github.com/samestrin/llm-services-api/stargazers)[![Fork on GitHub](https://img.shields.io/github/forks/samestrin/llm-services-api?style=social)](https://github.com/samestrin/llm-services-api/network/members)[![Watch on GitHub](https://img.shields.io/github/watchers/samestrin/llm-services-api?style=social)](https://github.com/samestrin/llm-services-api/watchers)
 
-![Version 0.0.3](https://img.shields.io/badge/Version-0.0.3-blue) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)[![Built with Python](https://img.shields.io/badge/Built%20with-Python-green)](https://www.python.org/)
+![Version 0.0.4](https://img.shields.io/badge/Version-0.0.4-blue) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)[![Built with Python](https://img.shields.io/badge/Built%20with-Python-green)](https://www.python.org/)
 
 LLM Services API is a FastAPI-based application that provides a suite of natural language processing services using various machine learning models from Hugging Face's `transformers` library. The application is designed to run in a Docker container, providing endpoints for text summarization, sentiment analysis, named entity recognition, paraphrasing, keyword extraction, and embedding generation. The entire API is secured using an API key with `Bearer <token>` format, ensuring that only authorized users can access the endpoints.
 
 The service allows flexibility in model selection through command-line arguments and a configuration file, `models_config.json`, enabling users to specify different Hugging Face models for various NLP tasks. This flexibility allows users to select lightweight models for lower-resource environments or more powerful models for advanced tasks.
 
 ## Updates
+
+**0.0.4**
+
+- **Tokenization Endpoint**: Added a `/tokenize` endpoint that processes input text and returns an array of token IDs using the specified NLP model. If no model is specified, it defaults to the `all-MiniLM-L6-v2` model. This endpoint enables users to tokenize text with the flexibility of choosing different models, enhancing the API's utility for various NLP tasks.
 
 **0.0.3**
 
@@ -300,6 +304,29 @@ The API provides several endpoints for various NLP tasks. Below is a summary of 
   }
 }
 ```
+
+#### 8. Tokenization
+
+- **Endpoint:** `/tokenize`
+- **Method:** `POST`
+- **Request Body:**
+
+```json
+{
+  "text": "Your text here",
+  "model": "all-MiniLM-L6-v2"  # Optional, specify a model for tokenization
+}
+```
+
+- **Response:**
+
+```json
+{
+  "tokens": [101, 7592, 999, ...]  # Array of token IDs representing the text
+}
+```
+
+This endpoint allows you to tokenize input text using a specified or default model. If the model field is not provided, the default embeddings model `all-MiniLM-L6-v2` will be used.
 
 ## Contribute
 

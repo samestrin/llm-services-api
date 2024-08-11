@@ -10,7 +10,8 @@ supported_models = {
     "embedding": {
         "all-MiniLM-L6-v2": "all-MiniLM-L6-v2",
         "all-mpnet-base-v2": "all-mpnet-base-v2",
-        "all-distilroberta-v1": "all-distilroberta-v1"
+        "all-distilroberta-v1": "all-distilroberta-v1",
+        "paraphrase-MiniLM-L6-v2": "paraphrase-MiniLM-L6-v2"
     },
     "summarization": {
         "facebook/bart-large-cnn": "facebook/bart-large-cnn",
