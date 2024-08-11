@@ -12,7 +12,8 @@ The service allows flexibility in model selection through command-line arguments
 
 **0.0.4**
 
-- **Tokenization Endpoint**: Added a `/tokenize` endpoint that processes input text and returns an array of token IDs using the specified NLP model. If no model is specified, it defaults to the `all-MiniLM-L6-v2` model. This endpoint enables users to tokenize text with the flexibility of choosing different models, enhancing the API's utility for various NLP tasks.
+- **Tokenization:** Convert input text into a list of token IDs, allowing you to process and manipulate text at the token level, default model `all-MiniLM-L6-v2`.
+- **Detokenization:** Reconstruct original text from a list of token IDs, allowing you to reverse the tokenization process, default model `all-MiniLM-L6-v2`.
 
 **0.0.3**
 
@@ -327,6 +328,27 @@ The API provides several endpoints for various NLP tasks. Below is a summary of 
 ```
 
 This endpoint allows you to tokenize input text using a specified or default model. If the model field is not provided, the default embeddings model `all-MiniLM-L6-v2` will be used.
+
+#### 8. Detokenization
+
+- **Endpoint:** `/detokenize`
+- **Method:** `POST`
+- **Request Body:**
+
+```json
+{
+  "tokens": [101, 2023, 2003, 2019, 2742, 6251, 2000, 19204, 1012, 102],  # List of token IDs
+  "model": "all-MiniLM-L6-v2"  # Optional, specify a model for detokenization
+}
+```
+
+- **Response:**
+
+```json
+{
+  "text": "This is an example sentence to tokenize."  # The reconstructed text
+}
+```
 
 ## Contribute
 
