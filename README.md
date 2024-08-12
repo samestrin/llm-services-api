@@ -32,7 +32,7 @@ The service allows flexibility in model selection through command-line arguments
 - **Paraphrasing:** Rephrase sentences to produce semantically similar outputs, default model `T5`.
 - **Keyword Extraction:** Extract important keywords from text, with customizable output count, default model `KeyBERT`.
 - **Embedding Generation:** Create vector representations of text, default model `SentenceTransformers` (all-MiniLM-L6-v2).
-- - **Caching with LRU:** Frequently used computations, such as generating embeddings and tokenizations, are cached using the Least Recently Used (LRU) strategy. This reduces response times for repeated requests and enhances overall performance.
+- **Caching with LRU:** Frequently used computations, such as generating embeddings and tokenizations, are cached using the Least Recently Used (LRU) strategy. This reduces response times for repeated requests and enhances overall performance.
 
 ## Dependencies
 
