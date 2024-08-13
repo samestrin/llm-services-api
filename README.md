@@ -76,7 +76,13 @@ pip install -r requirements.txt
 python -m spacy download en_core_web_sm
 ```
 
-5. **Run the Application Locally:**
+5. **Create Your .env File:**
+
+```bash
+echo "API_KEY=your-key-here" > .env
+```
+
+6. **Run the Application Locally:**
 
 You can run the application locally in two ways:
 
